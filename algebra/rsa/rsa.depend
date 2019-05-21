@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1556973179 source:c:\users\jalva\documents\algebra\rsa\main.cpp
+	<iostream>
+	<string.h>
+	<string>
+
+1556944377 c:\users\jalva\documents\algebra\rsa\include\afin.h
+	<iostream>
+	<string>
+	<cstdlib>
+	<ctime>
+
+1556946676 source:c:\users\jalva\documents\algebra\rsa\src\afin.cpp
+	"afin.h"
+	"euclides.h"
+
+1556946773 c:\users\jalva\documents\algebra\rsa\include\euclides.h
+	<iostream>
+	<vector>
+

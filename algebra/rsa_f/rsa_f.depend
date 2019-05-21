@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1558205131 source:c:\users\jalva\documents\algebra\rsa_f\main.cpp
+	<NTL/ZZ.h>
+	<iostream>
+	"rsa.h"
+
+1558197795 c:\users\jalva\documents\algebra\rsa_f\include\rsa.h
+	<sstream>
+	<NTL/ZZ.h>
+	<iostream>
+	"string"
+	<cstdlib>
+
+1558205110 source:c:\users\jalva\documents\algebra\rsa_f\src\rsa.cpp
+	"rsa.h"
+	"euclides.h"
+
+1558198796 c:\users\jalva\documents\algebra\rsa_f\include\euclides.h
+	<NTL/ZZ.h>
+	<iostream>
+	<vector>
+
