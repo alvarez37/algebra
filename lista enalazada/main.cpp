@@ -16,8 +16,10 @@ nodo::nodo(tipodato dato_){
     dato=dato_;
 }
 
+
 int main()
 {
-    cout << "Hello world!" << endl;
+    nodo p(7);
+    cout << p->valor<< endl;
     return 0;
 }
