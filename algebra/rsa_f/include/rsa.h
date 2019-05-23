@@ -26,6 +26,9 @@ class rsa{
       ZZ q;
       int bits;
       ZZ n;
+      string n_string;
+      string mensaje_con_0;
+      int n_string_tam;
       ZZ phi_n;
       ZZ e;
       ZZ d;

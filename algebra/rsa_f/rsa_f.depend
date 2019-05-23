@@ -20,3 +20,24 @@
 	<iostream>
 	<vector>
 
+1558561278 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\main.cpp
+	<NTL/ZZ.h>
+	<iostream>
+	"rsa.h"
+
+1558489333 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\rsa.h
+	<sstream>
+	<NTL/ZZ.h>
+	<iostream>
+	"string"
+	<cstdlib>
+
+1558560860 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\src\rsa.cpp
+	"rsa.h"
+	"euclides.h"
+
+1558561190 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\euclides.h
+	<NTL/ZZ.h>
+	<iostream>
+	<vector>
+

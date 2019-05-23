@@ -77,14 +77,15 @@ ZZ euclidesExtendido(ZZ a, ZZ b) {
 	t = t1;
 	return s;
 }
-int t_entero(ZZ number)
+
+int zz_a_entero(ZZ number)
 {
     int n;
     conv(n,number);
     return n;
 }
 
-int string_a_int (string &tex_numero){
+int string_a_entero (string &tex_numero){
   int numero;
   string letra;
   int contador=0;
@@ -98,14 +99,14 @@ int string_a_int (string &tex_numero){
   return numero;
 }
 
-ZZ elevar_n(int x, ZZ n,ZZ mod){
+ZZ elevar_a_la_potencia_n(ZZ x, ZZ n,ZZ mod){
   ZZ n_result=n/2;
-  ZZ x_result(x);
+  ZZ x_result=x;
 
   ZZ result_cuadro;
   ZZ result_mod;
 
-  ZZ zz_n(x);
+  ZZ zz_n=x;
   int x_mod2;
 
   while (n_result>0) {
@@ -123,4 +124,61 @@ ZZ elevar_n(int x, ZZ n,ZZ mod){
   }
 
   return x_result;
+}
+
+string entero_a_string(int x) {
+
+    if (x==0) {
+      return "00";
+    }
+    if (x<10) {
+      return "0"+static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
+    }
+
+      return static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
+  }
+
+string string_a_string_numerico(string texto , string alf){
+  string salida;
+
+  for (size_t i = 0; texto[i] != '\0'; i++) {
+    salida+=entero_a_string(alf.find(texto[i]));
+  }
+
+  return salida;
+}
+
+string zz_a_string(const ZZ &z) {
+      std::stringstream buffer;
+      buffer << z;
+      return buffer.str();
+  }
+
+  ZZ string_a_zz(string message){
+     NTL::ZZ number(NTL::INIT_VAL, message.c_str());
+     return number;
+   }
+
+ZZ bloques_de_enteros(string &tex,ZZ n){
+  ZZ numero;
+  ZZ numero_de_salida;
+  string numero_zz;
+  int i;
+  for ( i=0 ; numero < n and tex[i] != '\0' ; i++) {
+    numero_zz+=tex[i];
+    numero=string_a_zz(numero_zz);
+    if (numero < n) {
+      numero_de_salida=numero;
+    }
+  }
+
+  std::cout << "-------------------------" << '\n';
+  std::cout << " sin cortar " << tex <<'\n';
+  tex=tex.substr(i-1,tex.size());
+  std::cout<< "numero de salida "<< numero_de_salida <<'\n';
+  std::cout  << " cortado " << tex <<'\n';
+  std::cout << "-------------------------" << '\n';
+
+
+  return numero_de_salida;
 }
