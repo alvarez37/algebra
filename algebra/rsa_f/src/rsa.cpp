@@ -3,7 +3,7 @@
 
 rsa::rsa(){
   tam_array=alf.size();
-  bits=500;
+  bits=5;
   RandomPrime(p,bits);
   RandomPrime(q,bits);
   n=p*q;
@@ -89,3 +89,5 @@ string rsa::descifrado(string txt){
 
 ZZ rsa::get_p(){return p;}
 ZZ rsa::get_q(){return q;}
+string rsa::get_n(){return zz_a_string(n);}
+string rsa::get_e(){return zz_a_string(e);}

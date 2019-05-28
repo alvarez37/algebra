@@ -15,6 +15,9 @@ class rsa{
         rsa();
         ZZ get_p();
         ZZ get_q();
+        string get_n();
+        string get_e();
+
         string cifrado(string);
         string descifrado(string);
         rsa(string e_, string n_);

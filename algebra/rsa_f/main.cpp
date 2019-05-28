@@ -8,10 +8,10 @@
 using namespace std;
 using namespace NTL;
 
-string leertxt(string nombre){
+string leertxt(string documento){
 
   string cadena;
-  ifstream fe(nombre.c_str());
+  ifstream fe(documento.c_str());
   while (!fe.eof()) {
     fe >> cadena;
     cout << cadena << endl;
@@ -21,9 +21,9 @@ string leertxt(string nombre){
 }
 
 
-void escribir_txt(string txt,string nombre){
+void escribir_txt(string txt,string documento){
 
-  ofstream fs(nombre.c_str(), ios::out);
+  ofstream fs(documento.c_str(), ios::out);
   fs << txt << endl;
   fs.close();
 }
@@ -32,17 +32,23 @@ void escribir_txt(string txt,string nombre){
 
 int main(){
 
-  string nombre1="doc1.txt";
-  string nombre2="doc2.txt";
-  string nombre3="doc3.txt";
-  string nombre4="doc4.txt";
+  string documento1="doc1.txt";
+  string documento2="doc2.txt";
+  string documento3="doc3.txt";
+  string documento4="doc4.txt";
   string texto;
-  rsa p1;
+  rsa emisor;
+  escribir_txt("n: "+emisor.get_n()+" e: "+emisor.get_e(),documento3);
+
   int intercambio;
 
   while (true) {
-    std::cout << "1 para cifrar " << '\n';
-    std::cout << "2 para descifrado" << '\n';
+    std::cout << "1 para cifrar emisor" << '\n';
+    std::cout << "2 para descifrado emisor" << '\n';
+    std::cout << "3 para crear reseptor" << '\n';
+    std::cout << "4 para cifrar reseptor" << '\n';
+
+
     std::cin >> intercambio;
     if (intercambio==1) {
       std::cout << "que mensaje" << '\n';
@@ -50,15 +56,32 @@ int main(){
       // std::getline (std::cin,texto);
       // cin.ignore();
 
-      string cifrado=p1.cifrado(texto);
-      escribir_txt(cifrado,nombre1);
+      string cifrado=emisor.cifrado(texto);
+      escribir_txt(cifrado,documento1);
       std::cout << "-------gardado----------" << '\n';
     }
     if (intercambio==2) {
-      string descifrado=p1.descifrado(leertxt(nombre1));
-      escribir_txt(descifrado,nombre2);
-
+      string descifrado=emisor.descifrado(leertxt(documento1));
+      escribir_txt(descifrado,documento2);
     }
+
+    if (intercambio==3) {
+      string e=leertxt(documento3);
+      string n=leertxt(documento4);
+
+      rsa reseptor(e,n);
+    }
+
+    if (intercambio==4) {
+      std::cout << "que mensaje" << '\n';
+      std::cin >> texto;
+      // std::getline (std::cin,texto);
+      // cin.ignore();
+
+      descifrado=reseptor.cifrado(texto);
+      escribir_txt(descifrado,documento1);
+    }
+
 
   }
 
