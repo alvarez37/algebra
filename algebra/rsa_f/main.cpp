@@ -3,34 +3,32 @@
 #include <iostream>
 #include "rsa.h"
 #include <stdlib.h>
+#include <string.h>
 
 using namespace std;
 using namespace NTL;
 
 string leertxt(string nombre){
-     ifstream ficheroEntrada;
-     string frase;
-     ficheroEntrada.open ("doc1.txt");
-     getline(ficheroEntrada, frase);
-     ficheroEntrada.close();
-     return frase;
+
+  string cadena;
+  ifstream fe(nombre.c_str());
+  while (!fe.eof()) {
+    fe >> cadena;
+    cout << cadena << endl;
+  }
+  return cadena;
+  fe.close();
 }
+
+
 void escribir_txt(string txt,string nombre){
-  fstream ficheroEntrada;
-  ficheroEntrada.open ("doc1.txt");
-  string frase;
+
   ofstream fs(nombre.c_str(), ios::out);
   fs << txt << endl;
   fs.close();
 }
- void escribir_txt2(string txt,string nombre){
-   fstream ficheroEntrada;
-   ficheroEntrada.open ("doc2.txt");
-   string frase;
-   ofstream fs(nombre.c_str(), ios::out);
-   fs << txt << endl;
-   fs.close();
-}
+
+
 
 int main(){
 
@@ -50,16 +48,17 @@ int main(){
       std::cout << "que mensaje" << '\n';
       std::cin >> texto;
       // std::getline (std::cin,texto);
+      // cin.ignore();
+
       string cifrado=p1.cifrado(texto);
       escribir_txt(cifrado,nombre1);
       std::cout << "-------gardado----------" << '\n';
     }
     if (intercambio==2) {
       string descifrado=p1.descifrado(leertxt(nombre1));
-      escribir_txt2(descifrado,nombre2);
+      escribir_txt(descifrado,nombre2);
 
     }
-
 
   }
 

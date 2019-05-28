@@ -3,7 +3,7 @@
 
 rsa::rsa(){
   tam_array=alf.size();
-  bits=5;
+  bits=500;
   RandomPrime(p,bits);
   RandomPrime(q,bits);
   n=p*q;
@@ -73,7 +73,7 @@ string rsa::descifrado(string txt){
     base= bloques_de_enteros(txt,ZZ(n));
     base_por_exponete=elevar_a_la_potencia_n(base, d,n);
     std::cout  << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
-    txt_descifrado_retorno+=completar_ceros_string(zz_a_string(base_por_exponete), zz_a_string(base_por_exponete).size() , n_string_tam );
+    txt_descifrado_retorno+=zz_a_string(base_por_exponete);
   }
   std::cout << "numero  " << txt_descifrado_retorno<< '\n';
   for (int i = 0; i < txt_descifrado_retorno.size()-1; i+=2) {
