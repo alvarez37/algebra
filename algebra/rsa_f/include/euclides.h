@@ -85,17 +85,10 @@ int zz_a_entero(ZZ number)
     return n;
 }
 
-int string_a_entero (string &tex_numero){
+int string_a_entero (string tex_numero){
   int numero;
   string letra;
-  int contador=0;
-  int tam_string = tex_numero.size();
-  for (int i = 0 ; tex_numero[i] != '-'; i++) {
-    contador++;
-    letra+=tex_numero[i];
-  }
   numero = atoi(letra.c_str());
-  tex_numero=tex_numero.substr(contador+1,tam_string);
   return numero;
 }
 
@@ -126,6 +119,16 @@ ZZ elevar_a_la_potencia_n(ZZ x, ZZ n,ZZ mod){
   return x_result;
 }
 
+string completar_ceros_string(string digitos,int y,int x) {
+    string salida=digitos;
+    for (int i = y; i < x; i++) {
+        salida="0"+salida;
+    }
+    std::cout  <<"*************************************************************" <<salida;
+    return salida;
+  }
+
+
 string entero_a_string(int x) {
 
     if (x==0) {
@@ -134,7 +137,6 @@ string entero_a_string(int x) {
     if (x<10) {
       return "0"+static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
     }
-
       return static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
   }
 
@@ -142,7 +144,7 @@ string string_a_string_numerico(string texto , string alf){
   string salida;
 
   for (size_t i = 0; texto[i] != '\0'; i++) {
-    salida+=entero_a_string(alf.find(texto[i]));
+    salida+=entero_a_string(alf.find(texto[i])+10);
   }
 
   return salida;
@@ -171,10 +173,13 @@ ZZ bloques_de_enteros(string &tex,ZZ n){
       numero_de_salida=numero;
     }
   }
-
   std::cout << "-------------------------" << '\n';
   std::cout << " sin cortar " << tex <<'\n';
-  tex=tex.substr(i-1,tex.size());
+
+  if (i>0) {
+    i--;
+  }
+  tex=tex.substr(i,tex.size());
   std::cout<< "numero de salida "<< numero_de_salida <<'\n';
   std::cout  << " cortado " << tex <<'\n';
   std::cout << "-------------------------" << '\n';

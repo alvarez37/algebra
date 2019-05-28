@@ -17,7 +17,7 @@ class rsa{
         ZZ get_q();
         string cifrado(string);
         string descifrado(string);
-
+        rsa(string e_, string n_);
 
     private:
       string alf="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
