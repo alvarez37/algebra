@@ -7,8 +7,6 @@
 #include <cstdlib>
 
 
-// hola des git hub 
-
 using namespace std;
 using namespace NTL;
 
