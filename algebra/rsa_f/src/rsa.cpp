@@ -28,6 +28,10 @@ rsa::rsa(){
 
 }
 
+
+
+
+
 rsa::rsa(string e_, string n_){
   e=string_a_zz(e_);
   n=string_a_zz(n_);
@@ -49,13 +53,13 @@ string rsa::cifrado(string txt){
   ZZ base;
   ZZ base_por_exponete;
   std::cout << mensaje_con_0 << '\n';
-  for (int i = 0; tam_array_entrada >i ; i++) {
+  for (int i=0;1+tam_array_entrada > 0;i++) {
     base= bloques_de_enteros(mensaje_con_0,ZZ(n));
     base_por_exponete=elevar_a_la_potencia_n(base, e ,n);
-    std::cout  << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
-
+    std::cout << "base " << base << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
     txt_cifrado_retorno+=zz_a_string(base_por_exponete);
-
+    tam_array_entrada = mensaje_con_0.size();
+    std::cout << tam_array_entrada << '\n';
   }
   return txt_cifrado_retorno;
 }

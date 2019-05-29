@@ -165,21 +165,23 @@ ZZ bloques_de_enteros(string &tex,ZZ n){
   ZZ numero;
   ZZ numero_de_salida;
   string numero_zz;
+  string respaldo;
   int i;
-  for ( i=0 ; numero < n and tex[i] != '\0' ; i++) {
-    numero_zz+=tex[i];
+  for ( i=0 ; numero < n  ; i++) {
+    numero_zz+=tex.substr(0,2);
     numero=string_a_zz(numero_zz);
+    respaldo=tex;
+    tex=tex.substr(2,tex.size());
     if (numero < n) {
+      numero_zz+=tex.substr(0,2);
       numero_de_salida=numero;
     }
   }
+
+  tex=respaldo;
+
   std::cout << "-------------------------" << '\n';
   std::cout << " sin cortar " << tex <<'\n';
-
-  if (i>0) {
-    i--;
-  }
-  tex=tex.substr(i,tex.size());
   std::cout<< "numero de salida "<< numero_de_salida <<'\n';
   std::cout  << " cortado " << tex <<'\n';
   std::cout << "-------------------------" << '\n';
@@ -203,6 +205,40 @@ ZZ bloques_de_enteros(string &tex,ZZ n){
 
 //TODO: rsa com blockes de uno a uno
 //
+
+// ZZ bloques_de_enteros(string &tex,ZZ n){
+//   ZZ numero;
+//   ZZ numero_de_salida;
+//   string numero_zz;
+//   int i;
+//   for ( i=0 ; numero < n and tex[i] != '\0' ; i++) {
+//     numero_zz+=tex[i];
+//     numero=string_a_zz(numero_zz);
+//     if (numero < n) {
+//       numero_de_salida=numero;
+//     }
+//   }
+//   std::cout << "-------------------------" << '\n';
+//   std::cout << " sin cortar " << tex <<'\n';
+//
+//   if (i>0) {
+//     i--;
+//   }
+//   tex=tex.substr(i,tex.size());
+//   std::cout<< "numero de salida "<< numero_de_salida <<'\n';
+//   std::cout  << " cortado " << tex <<'\n';
+//   std::cout << "-------------------------" << '\n';
+//
+//
+//   return numero_de_salida;
+// }
+//
+//
+//
+
+
+
+
 // #include "rsa.h"
 // #include "euclides.h"
 //

@@ -45,8 +45,7 @@ int main(){
   while (true) {
     std::cout << "1 para cifrar emisor" << '\n';
     std::cout << "2 para descifrado emisor" << '\n';
-    std::cout << "3 para crear reseptor" << '\n';
-    std::cout << "4 para cifrar reseptor" << '\n';
+    std::cout << "3 para cifrar reseptor" << '\n';
 
 
     std::cin >> intercambio;
@@ -66,20 +65,18 @@ int main(){
     }
 
     if (intercambio==3) {
+
       string e=leertxt(documento3);
       string n=leertxt(documento4);
 
       rsa reseptor(e,n);
-    }
-
-    if (intercambio==4) {
       std::cout << "que mensaje" << '\n';
       std::cin >> texto;
       // std::getline (std::cin,texto);
       // cin.ignore();
 
-      descifrado=reseptor.cifrado(texto);
-      escribir_txt(descifrado,documento1);
+      string descifrado_reseptor=reseptor.cifrado(texto);
+      escribir_txt(descifrado_reseptor,documento1);
     }
 
 
