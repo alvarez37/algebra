@@ -53,7 +53,7 @@ string rsa::cifrado(string txt){
   ZZ base;
   ZZ base_por_exponete;
   std::cout << mensaje_con_0 << '\n';
-  for (int i=0;1+tam_array_entrada > 0;i++) {
+  for (int i=0;tam_array_entrada > 0;i++) {
     base= bloques_de_enteros(mensaje_con_0,ZZ(n));
     base_por_exponete=elevar_a_la_potencia_n(base, e ,n);
     std::cout << "base " << base << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
