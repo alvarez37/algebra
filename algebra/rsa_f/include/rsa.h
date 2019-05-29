@@ -7,6 +7,8 @@
 #include <cstdlib>
 
 
+// hoA desde atom 
+
 using namespace std;
 using namespace NTL;
 
