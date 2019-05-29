@@ -6,6 +6,10 @@
 #include "string"
 #include <cstdlib>
 
+<<<<<<< HEAD
+=======
+////////////////////
+>>>>>>> 278d348adbaf8ae67e52d10be1aa54e1910ff302
 
 using namespace std;
 using namespace NTL;
