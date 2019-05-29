@@ -6,7 +6,6 @@
 #include "string"
 #include <cstdlib>
 
-//hola
 
 using namespace std;
 using namespace NTL;
