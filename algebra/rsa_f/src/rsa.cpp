@@ -53,13 +53,13 @@ string rsa::cifrado(string txt){
   ZZ base;
   ZZ base_por_exponete;
   std::cout << mensaje_con_0 << '\n';
-  for (int i=0;tam_array_entrada > 0;i++) {
+  for (int i=0; tam_array_entrada>1 ;i++) {
     base= bloques_de_enteros(mensaje_con_0,ZZ(n));
+    std::cout << mensaje_con_0<< "   h" << '\n';
     base_por_exponete=elevar_a_la_potencia_n(base, e ,n);
     std::cout << "base " << base << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
     txt_cifrado_retorno+=zz_a_string(base_por_exponete);
-    tam_array_entrada = mensaje_con_0.size();
-    std::cout << tam_array_entrada << '\n';
+    tam_array_entrada = mensaje_con_0.size()+1;
   }
   return txt_cifrado_retorno;
 }
