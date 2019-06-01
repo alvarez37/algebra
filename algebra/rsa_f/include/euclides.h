@@ -1,3 +1,5 @@
+#ifndef euclides
+#define euclides
 #include <NTL/ZZ.h>
 #include <iostream>
 #include<vector>
@@ -91,7 +93,6 @@ int string_a_entero (string tex_numero){
   numero = atoi(letra.c_str());
   return numero;
 }
-
 ZZ elevar_a_la_potencia_n(ZZ x, ZZ n,ZZ mod){
   ZZ n_result=n/2;
   ZZ x_result=x;
@@ -117,6 +118,80 @@ ZZ elevar_a_la_potencia_n(ZZ x, ZZ n,ZZ mod){
   }
 
   return x_result;
+}
+ZZ Phi(ZZ X){
+    if(X==to_ZZ(1)){
+        return to_ZZ(0);
+    }
+    if(ProbPrime(X)==true){
+        return X-to_ZZ(1);
+    }
+    else{
+        ZZ res=to_ZZ(1);
+        for(ZZ i=to_ZZ("2");i<=X;i++){
+            ZZ aux_num=to_ZZ(0);
+            ZZ aux_res;
+            long aux_pot=0;
+                while(modulo(X,i)==to_ZZ(0)){
+                aux_num=i;
+                aux_pot++;
+                X/=i;
+                }
+            if(aux_num!=0){
+                aux_res=power(aux_num,aux_pot)-power(aux_num,aux_pot-1);
+                res*=aux_res;
+            }
+        }
+    return res;
+    }
+}
+ZZ exp_eucliFerm(ZZ A,ZZ B,ZZ P){
+    if(ProbPrime(P)==true&&modulo(A,P)!=0){///aplicando teorema pequeño de fermat primera version
+        if((P-1)<B){
+        ZZ aux=modulo(B,P-1);
+            return elevar_a_la_potencia_n(A,aux,P);
+        }
+        if(modulo(B,P-1)==to_ZZ(0)){
+            return to_ZZ(1);
+        }
+    }
+    if(A<P){///aplicando teorema de euler segunda version
+        ZZ Phi_P=Phi(P)+to_ZZ(1);
+        if(Phi_P<B){
+            ZZ aux=modulo(B,Phi_P);
+            return modulo(A*elevar_a_la_potencia_n(A,aux,P),P);
+        }
+        if(Phi_P==B)return A;
+    }
+    return elevar_a_la_potencia_n(A,B,P);
+}
+ZZ inv_eucliferm(ZZ A,ZZ P){
+    if(ProbPrime(P)==true&&modulo(A,P)!=0){///aplicando teorema pequeño de fermat
+        return exp_eucliFerm(A,P-to_ZZ(2),P);
+    }
+    if(mcd(P,A)==to_ZZ(1)){///aplicando teorema de euler
+        return exp_eucliFerm(A,Phi(P)-to_ZZ(1),P);
+    }
+    return mod_inverso(A,P);
+}
+ZZ restito(ZZ mensaje,ZZ DP,ZZ DQ,ZZ P,ZZ Q){
+    ZZ P_1,P_2,P_1_aux,P_2_aux,Q_1,Q_2,A_1,A_2,D_0;
+    ZZ P_aux=P*Q;
+    P_1=P_aux/P;
+    P_2=P_aux/Q;
+
+        P_1_aux=modulo(P_1,P);
+        P_2_aux=modulo(P_2,Q);
+
+    Q_1=inv_eucliferm(P_1_aux,P);
+    Q_2=inv_eucliferm(P_2_aux,Q);
+
+    A_1=exp_eucliFerm(mensaje,DP,P);
+    A_2=exp_eucliFerm(mensaje,DQ,Q);
+
+    D_0=modulo((A_1*P_1*Q_1)+(A_2*P_2*Q_2),P_aux);
+
+    return D_0;
 }
 
 string completar_ceros_string(string digitos,int y,int x) {
@@ -206,8 +281,7 @@ ZZ bloques_de_enteros(string &tex,ZZ n){
 }
 
 
-
-
+#endif // euclides
 
 
 

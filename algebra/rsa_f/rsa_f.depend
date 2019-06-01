@@ -20,7 +20,7 @@
 	<iostream>
 	<vector>
 
-1559366763 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\main.cpp
+1559402672 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\main.cpp
 	<fstream>
 	<NTL/ZZ.h>
 	<iostream>
@@ -35,11 +35,11 @@
 	"string"
 	<cstdlib>
 
-1559366881 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\src\rsa.cpp
+1559402453 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\src\rsa.cpp
 	"rsa.h"
 	"euclides.h"
 
-1559368665 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\euclides.h
+1559402453 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\euclides.h
 	<NTL/ZZ.h>
 	<iostream>
 	<vector>
