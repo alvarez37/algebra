@@ -165,29 +165,41 @@ ZZ bloques_de_enteros(string &tex,ZZ n){
   ZZ numero;
   ZZ numero_de_salida;
   string numero_zz;
-  string respaldo;
-  int i;
+  string respaldo=tex;
+  bool cambiar=true;
 
-  for ( i=0 ; numero < n and tex.size()!=0; i++) {
+  for (int i=0 ; tex.size()>0 ; i++) {
       numero_zz+=tex.substr(0,2);
       numero=string_a_zz(numero_zz);
+
       respaldo=tex;
       tex=tex.substr(2,tex.size());
-      if (numero < n) {
-        numero_zz+=tex.substr(0,2);
-        numero_de_salida=numero;
+
+      if (numero > n) {
+        tex=respaldo;
+        break;
       }
-    // std::cout << "           " << tex[i] <<'\n';
+      else{
+        numero_de_salida=numero;
 
-  }
-  if (tex.size()!=0) {
-    tex=respaldo;
-  }
+      }
 
-  std::cout << "-------------------------" << '\n';
-  std::cout<< "numero de salida "<< numero_de_salida <<'\n';
-  std::cout  << " cortado " << tex <<'\n';
-  std::cout << "-------------------------" << '\n';
+      if(tex.size()==0 ) {
+        break;
+
+      }
+      // if(tex.size()==0 and cambiar ) {
+      //   cambiar=false;
+      //   numero_de_salida=numero;
+      // }
+
+    }
+
+
+    // std::cout << "-------------------------" << '\n';
+    // std::cout<< "numero de salida "<< numero_de_salida <<'\n';
+    // std::cout << "-------------------------" << '\n';
+    // std::cout  << " cortado " << tex <<'\n';
 
 
   return numero_de_salida;

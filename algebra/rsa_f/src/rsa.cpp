@@ -3,7 +3,7 @@
 
 rsa::rsa(){
   tam_array=alf.size();
-  bits=5;
+  bits=10;
   RandomPrime(p,bits);
   RandomPrime(q,bits);
   n=p*q;
@@ -28,10 +28,6 @@ rsa::rsa(){
 
 }
 
-
-
-
-
 rsa::rsa(string e_, string n_){
   e=string_a_zz(e_);
   n=string_a_zz(n_);
@@ -41,6 +37,7 @@ rsa::rsa(string e_, string n_){
   std::cout << "-------------------------" << '\n';
 
 }
+
 string rsa::cifrado(string txt){
   //TODO: capturar los digitos de n
   n_string=zz_a_string(n);
@@ -49,18 +46,20 @@ string rsa::cifrado(string txt){
   mensaje_con_0=string_a_string_numerico(txt,alf);
 
   string txt_cifrado_retorno;
-  int tam_array_entrada = txt.size();
   ZZ base;
   ZZ base_por_exponete;
+
+  std::cout << "---------------------------------------------" << '\n';
   std::cout << mensaje_con_0 << '\n';
-  for (int i=0; tam_array_entrada>1 ;i++) {
-    base= bloques_de_enteros(mensaje_con_0,ZZ(n));
-    std::cout << mensaje_con_0<< "   h" << '\n';
+  std::cout << "---------------------------------------------" << '\n';
+  for (int i=0; mensaje_con_0.size()>1 ;i++) {
+    base= bloques_de_enteros(mensaje_con_0,n);
     base_por_exponete=elevar_a_la_potencia_n(base, e ,n);
     std::cout << "base " << base << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
     txt_cifrado_retorno+=zz_a_string(base_por_exponete);
-    tam_array_entrada = mensaje_con_0.size()+1;
   }
+  std::cout << "---------------------------------------------" << '\n';
+
   return txt_cifrado_retorno;
 }
 
@@ -69,16 +68,19 @@ string rsa::descifrado(string txt){
   string txt_descifrado_retorno;
   string txt_descifrado;
 
-  int tam_array_entrada = txt.size();
   ZZ base;
   ZZ base_por_exponete;
 
-  for (int i = 0;txt [i] != '\0'; i++) {
-    base= bloques_de_enteros(txt,ZZ(n));
+  for (int i=0; txt.size()>1 ;i++) {
+    base= bloques_de_enteros(txt,n);
     base_por_exponete=elevar_a_la_potencia_n(base, d,n);
-    std::cout  << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
+    std::cout << "base " << base << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
     txt_descifrado_retorno+=zz_a_string(base_por_exponete);
   }
+
+
+
+
   std::cout << "numero  " << txt_descifrado_retorno<< '\n';
   for (int i = 0; i < txt_descifrado_retorno.size()-1; i+=2) {
     int j = txt_descifrado_retorno[i] - '0';
