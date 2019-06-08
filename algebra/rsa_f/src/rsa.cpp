@@ -3,14 +3,14 @@
 
 rsa::rsa(){
   tam_array=alf.size();
-  bits=10;
+  bits=20;
   RandomPrime(p,bits);
   RandomPrime(q,bits);
   n=p*q;
   phi_n=(p-1)*(q-1);
   RandomPrime(e,bits);
 
-  while (mcd(e,phi_n)!=1) {
+  while (GCD(e,phi_n)!=1) {
     RandomPrime(e,bits);
     }
 
@@ -54,8 +54,7 @@ string rsa::cifrado(string txt){
   std::cout << "---------------------------------------------" << '\n';
   for (int i=0; mensaje_con_0.size()>1 ;i++) {
     base= bloques_de_enteros(mensaje_con_0,n);
-
-    base_por_exponete=elevar_a_la_potencia_n(base, e ,n);
+    base_por_exponete=exp_eucliFerm(base, e ,n);
     std::cout << "base " << base << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
     txt_cifrado_retorno+=zz_a_string(base_por_exponete);
   }
@@ -74,13 +73,10 @@ string rsa::descifrado(string txt){
 
   for (int i=0; txt.size()>1 ;i++) {
     base= bloques_de_enteros(txt,n);
-    base_por_exponete=elevar_a_la_potencia_n(base,d,n);
+    base_por_exponete=restito(base,modulo(d,p-to_ZZ(1)),modulo(d,q-to_ZZ(1)),p,q);
     std::cout << "base " << base << " palabra_array [" << i << "] "<< base_por_exponete <<'\n';
     txt_descifrado_retorno+=zz_a_string(base_por_exponete);
   }
-
-
-
 
   std::cout << "numero  " << txt_descifrado_retorno<< '\n';
   for (int i = 0; i < txt_descifrado_retorno.size()-1; i+=2) {
