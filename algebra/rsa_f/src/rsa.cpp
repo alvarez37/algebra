@@ -3,14 +3,17 @@
 
 rsa::rsa(){
   tam_array=alf.size();
-  bits=64;
+  bits=60;
   RandomPrime(p,bits);
   RandomPrime(q,bits);
   n=p*q;
   phi_n=(p-1)*(q-1);
   RandomPrime(e,bits);
   std::cout << "aaaaaaaaaaaaaaaaaaaaa" << '\n';
-  while (mcd(e,phi_n)!=1) {
+  while (true) {
+    if (mcd(e,phi_n)==1) {
+      break;
+    }
     RandomPrime(e,bits);
     std::cout << "aaaaaaaaaaaaaaaaaaaaa" << '\n';
     }
