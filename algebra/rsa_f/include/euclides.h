@@ -6,6 +6,59 @@
 using namespace std;
 using namespace NTL;
 
+bool par (ZZ x){
+\
+    return ((x&1) == 1) ? 0:1;
+}
+
+ZZ mcd(ZZ m, ZZ n)
+{
+    ZZ cero = conv<ZZ>("0");
+if (m == cero || n == cero)
+return cero;
+
+int s = 0;
+
+while (par(m) && par(n))
+{
+m >>= 1;
+n >>= 1;
+s++;
+}
+
+while (par(n))
+{
+n >>= 1;
+}
+
+while (m != 0)
+{
+while (par(m))
+{
+m >>= 1;
+}
+
+if (m < n)
+swap(m, n);
+
+m -= n;
+m >>= 1;
+}
+int dos = 2;
+
+if (s == 0)
+dos >>= 1;
+
+for (int i = 0; i < s - 1; ++i)
+{
+dos <<= 1;
+}
+
+
+return dos * n;
+}
+
+
 
 ZZ modulo(ZZ a,ZZ tam_array){
   ZZ residuo;
@@ -19,15 +72,15 @@ ZZ modulo(ZZ a,ZZ tam_array){
   return residuo;
 }
 
-ZZ mcd(ZZ dividendo,ZZ divisor){
-    ZZ residuo=modulo(dividendo,divisor);
-    while(residuo>0){
-        dividendo=divisor;
-        divisor=residuo;
-        residuo=modulo(dividendo,divisor);
-    }
-    return divisor;
-}
+// ZZ mcd(ZZ dividendo,ZZ divisor){
+//     ZZ residuo=modulo(dividendo,divisor);
+//     while(residuo>0){
+//         dividendo=divisor;
+//         divisor=residuo;
+//         residuo=modulo(dividendo,divisor);
+//     }
+//     return divisor;
+// }
 
 ZZ mod_inverso(ZZ a,ZZ b){
     ZZ p0,p1(1),pn(0),q,cont(0),total;
@@ -279,6 +332,7 @@ ZZ bloques_de_enteros(string &tex,ZZ n){
 
   return numero_de_salida;
 }
+
 
 
 #endif // euclides

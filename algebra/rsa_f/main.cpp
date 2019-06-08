@@ -31,6 +31,8 @@ void escribir_txt(string txt,string documento){
 
 
 int main(){
+  //TODO: el "doc3.txt" es la clave publica del reseptor
+  // el "doc4.txt" es la n del reseptor
 
   string documento1="doc1.txt";
   string documento2="doc2.txt";
@@ -44,7 +46,7 @@ int main(){
   while (true) {
     std::cout << "1 para cifrar emisor" << '\n';
     std::cout << "2 para descifrado emisor" << '\n';
-    std::cout << "3 para cifrar reseptor" << '\n';
+    std::cout << "3 cifrar para reseptor" << '\n';
     std::cin >> intercambio;
 
     switch (intercambio) {
@@ -58,17 +60,19 @@ int main(){
       case 2:  {string descifrado=emisor.descifrado(leertxt(documento1));
                escribir_txt(descifrado,documento2);
                break;}
-      case 3:   {string e=leertxt(documento3);
+      case 3:   {
+                string e=leertxt(documento3);
                 string n=leertxt(documento4);
 
                 rsa reseptor(e,n);
                 std::cout << "que mensaje" << '\n';
                 cin.ignore();
                  std::getline (std::cin,texto);
-
                 string descifrado_reseptor=reseptor.cifrado(texto);
                 escribir_txt(descifrado_reseptor,documento1);
-                break;}
+
+                break;
+              }
     }
   }
 

@@ -3,15 +3,16 @@
 
 rsa::rsa(){
   tam_array=alf.size();
-  bits=20;
+  bits=64;
   RandomPrime(p,bits);
   RandomPrime(q,bits);
   n=p*q;
   phi_n=(p-1)*(q-1);
   RandomPrime(e,bits);
-
-  while (GCD(e,phi_n)!=1) {
+  std::cout << "aaaaaaaaaaaaaaaaaaaaa" << '\n';
+  while (mcd(e,phi_n)!=1) {
     RandomPrime(e,bits);
+    std::cout << "aaaaaaaaaaaaaaaaaaaaa" << '\n';
     }
 
   d= inv_eucliferm(e,phi_n);
