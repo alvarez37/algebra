@@ -65,9 +65,13 @@ int main(){
                 string n=leertxt(documento4);
 
                 rsa reseptor(e,n);
-                std::cout << "que mensaje" << '\n';
-                cin.ignore();
-                 std::getline (std::cin,texto);
+
+                // std::cout << "que mensaje" << '\n';
+                // cin.ignore();
+                // std::getline (std::cin,texto);
+
+                texto=leertxt(documento2);
+
                 string descifrado_reseptor=reseptor.cifrado(texto);
                 escribir_txt(descifrado_reseptor,documento1);
 
