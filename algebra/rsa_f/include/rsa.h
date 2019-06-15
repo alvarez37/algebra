@@ -19,11 +19,15 @@ class rsa{
         string get_e();
 
         string cifrado(string);
+        string cifrado_ascii(string);
+
         string descifrado(string);
+        string descifrado_ascii(string);
+
         rsa(string e_, string n_);
 
     private:
-      string alf="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
+      string alf="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.";
       int tam_array;
       ZZ p;
       ZZ q;

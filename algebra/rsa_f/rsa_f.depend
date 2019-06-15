@@ -1,26 +1,5 @@
 # depslib dependency file v1.0
-1558205131 source:c:\users\jalva\documents\algebra\rsa_f\main.cpp
-	<NTL/ZZ.h>
-	<iostream>
-	"rsa.h"
-
-1558197795 c:\users\jalva\documents\algebra\rsa_f\include\rsa.h
-	<sstream>
-	<NTL/ZZ.h>
-	<iostream>
-	"string"
-	<cstdlib>
-
-1558205110 source:c:\users\jalva\documents\algebra\rsa_f\src\rsa.cpp
-	"rsa.h"
-	"euclides.h"
-
-1558198796 c:\users\jalva\documents\algebra\rsa_f\include\euclides.h
-	<NTL/ZZ.h>
-	<iostream>
-	<vector>
-
-1560020502 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\main.cpp
+1560564039 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\main.cpp
 	<fstream>
 	<NTL/ZZ.h>
 	<iostream>
@@ -28,19 +7,20 @@
 	<stdlib.h>
 	<string.h>
 
-1559137149 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\rsa.h
+1560563897 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\rsa.h
 	<sstream>
 	<NTL/ZZ.h>
 	<iostream>
 	"string"
 	<cstdlib>
 
-1560022408 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\src\rsa.cpp
+1560570099 source:c:\users\jalva\documents\github\algebra\algebra\rsa_f\src\rsa.cpp
 	"rsa.h"
 	"euclides.h"
 
-1560016548 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\euclides.h
+1560570251 c:\users\jalva\documents\github\algebra\algebra\rsa_f\include\euclides.h
 	<NTL/ZZ.h>
 	<iostream>
 	<vector>
+	<string>
 

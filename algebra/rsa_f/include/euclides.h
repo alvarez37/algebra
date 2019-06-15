@@ -1,13 +1,62 @@
 #ifndef euclides
 #define euclides
+
 #include <NTL/ZZ.h>
 #include <iostream>
 #include<vector>
+
+#include <string>
+
 using namespace std;
 using namespace NTL;
 
+
+string entero_a_string(int x) {
+
+    if (x==0) {
+      return "000";
+    }
+    if (x<10) {
+      return "00"+static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
+    }
+    if (x<100) {
+      return "0"+static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
+    }
+      return static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
+  }
+
+string copletar_ceros_ascii(string texto){
+  string cadena_de_salida;
+  int ValeurASCII;
+  for (int i = 0; i < texto.size(); i++) {
+    ValeurASCII = static_cast<int>(texto[i]);
+    cadena_de_salida+=entero_a_string(ValeurASCII);
+    std::cout<< entero_a_string(ValeurASCII) << '\n';
+  }
+
+
+  return cadena_de_salida;
+}
+
+
+
+
+string string_a_ascii(string texto){
+
+  string cadena_de_salida;
+  int ValeurASCII;
+  for (int i = 0; i < texto.size(); i++) {
+    ValeurASCII =  static_cast<int>(texto[i]);
+    cadena_de_salida+= static_cast<std::ostringstream*>(&(std::ostringstream() << ValeurASCII))->str();
+  }
+
+
+  return cadena_de_salida;
+}
+
+
 bool par (ZZ x){
-\
+
     return ((x&1) == 1) ? 0:1;
 }
 
@@ -142,8 +191,7 @@ int zz_a_entero(ZZ number)
 
 int string_a_entero (string tex_numero){
   int numero;
-  string letra;
-  numero = atoi(letra.c_str());
+  numero = atoi(tex_numero.c_str());
   return numero;
 }
 ZZ elevar_a_la_potencia_n(ZZ x, ZZ n,ZZ mod){
@@ -257,16 +305,6 @@ string completar_ceros_string(string digitos,int y,int x) {
   }
 
 
-string entero_a_string(int x) {
-
-    if (x==0) {
-      return "00";
-    }
-    if (x<10) {
-      return "0"+static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
-    }
-      return static_cast<std::ostringstream*>(&(std::ostringstream() << x))->str();
-  }
 
 string string_a_string_numerico(string texto , string alf){
   string salida;
@@ -333,6 +371,86 @@ ZZ bloques_de_enteros(string &tex,ZZ n){
   return numero_de_salida;
 }
 
+
+// TODO: rsa com blockes de uno a uno
+ZZ bloques_de_enteros_atras(string &tex,ZZ n){
+  string n_string=zz_a_string(n);
+  int n_string_tam=n_string.size();
+  // std::cout << n_string_tam << '\n';
+
+  int tamanio=tex.size()-1;
+  string numero_zz;
+  string temp;
+
+  ZZ numero;
+  ZZ numero_de_salida;
+  int cortar;
+  int i;
+
+  if (n_string_tam  < tex.size() ) {
+    for ( i=0 ; numero < n  ; i++) {
+      temp= tex[tamanio];
+      numero_zz.insert(0,temp);
+      tamanio--;
+      numero=string_a_zz(numero_zz);
+      if (numero < n) {
+        numero_de_salida=numero;
+      }
+    }
+     cortar=tex.size()-zz_a_string(numero_de_salida).size();
+  }
+  else{
+    numero_de_salida=string_a_zz(tex);
+    cortar=0;
+  }
+
+
+
+   cortar=fabsf  (cortar);
+   tex=tex.substr(0,cortar);
+   std::cout << "---------------------------------------------" << '\n';
+   std::cout<< "numero de cortar "<<  cortar <<'\n';
+  std::cout<< "numero de salida "<< numero_de_salida <<'\n';
+  std::cout  << " cortado " << tex <<'\n';
+  std::cout << "---------------------------------------------" << '\n';
+
+
+  return numero_de_salida;
+}
+
+string texto_de_salida_ascii(string texto){
+
+  string cad1=texto;
+  string cad2;
+  string cadena_de_salida;
+
+  string a;
+
+  for (int i = 0;  ; i++) {
+
+    if ( cad1.size() < 3) {
+
+      a=string_a_entero(cad1);
+      std::cout << "a fin " << a << '\n';
+
+      cadena_de_salida.insert(0,a);
+      break;
+    }
+    else{
+
+      cad2=cad1.substr(cad1.size()-3,cad1.size());
+      a=string_a_entero(cad2);
+      std::cout << "a  " << a << '\n';
+
+      cad1=cad1.substr(0,cad1.size()-3);
+      cadena_de_salida.insert(0,a);
+
+    }
+
+  }
+
+  return cadena_de_salida;
+}
 
 
 #endif // euclides
