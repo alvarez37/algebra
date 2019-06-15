@@ -5,7 +5,7 @@ rsa::rsa(){
   tam_array=alf.size();
   bits=1024;
   q=GenPrime_ZZ(bits);
-  p=GenPrime_ZZ(bits);
+  p=GenPrime_ZZ(bits-1);
   n=p*q;
   phi_n=(p-1)*(q-1);
 
@@ -17,7 +17,8 @@ rsa::rsa(){
     e=GenPrime_ZZ(bits);
     }
 
-  d= mod_inverso(e,phi_n);
+  d= mod_inverso(e, phi_n );
+  d=modulo(d,phi_n);
 
   std::cout << "-------------------------"  << '\n';
   std::cout << "p: " << p << '\n';
@@ -73,6 +74,9 @@ string rsa::cifrado_ascii(string txt){
   n_string_tam=n_string.size();
 
   string mensaje=copletar_ceros_ascii(txt);
+
+  // string mensaje="500";
+
 
   string txt_cifrado_retorno;
 

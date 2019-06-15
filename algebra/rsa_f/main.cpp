@@ -60,6 +60,11 @@ int main(){
       string cifrado=emisorascii.cifrado_ascii(texto);
       escribir_txt(cifrado,documento1);
       std::cout << "-------gardado----------" << '\n';
+      std::cout << "-------------------------" << '\n';
+      std::cout << "-------------------------" << '\n';
+      std::cout << "-------------------------" << '\n';
+      std::cout << "-------------------------" << '\n';
+      
       string descifrado=emisorascii.descifrado_ascii(cifrado);
       escribir_txt(descifrado,documento4);
 

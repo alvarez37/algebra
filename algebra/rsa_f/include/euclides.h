@@ -31,7 +31,7 @@ string copletar_ceros_ascii(string texto){
   for (int i = 0; i < texto.size(); i++) {
     ValeurASCII = static_cast<int>(texto[i]);
     cadena_de_salida+=entero_a_string(ValeurASCII);
-    std::cout<< entero_a_string(ValeurASCII) << '\n';
+     std::cout<< entero_a_string(ValeurASCII) << '\n';
   }
 
 
@@ -400,17 +400,26 @@ ZZ bloques_de_enteros_atras(string &tex,ZZ n){
      cortar=tex.size()-zz_a_string(numero_de_salida).size();
   }
   else{
-    numero_de_salida=string_a_zz(tex);
-    cortar=0;
+
+    if (tex[tamanio-1] == '0' and tex[tamanio] == '0' ) {
+      numero_de_salida=ZZ(0);
+      cortar=tamanio;
+    }
+    else{
+
+      numero_de_salida=string_a_zz(tex);
+      cortar=0;
+    }
+
   }
 
-
+std::cout << "---------------------------------------------" << '\n';
+std::cout  << "sin  cortar " << tex <<'\n';
 
    cortar=fabsf  (cortar);
    tex=tex.substr(0,cortar);
-   std::cout << "---------------------------------------------" << '\n';
-   std::cout<< "numero de cortar "<<  cortar <<'\n';
   std::cout<< "numero de salida "<< numero_de_salida <<'\n';
+
   std::cout  << " cortado " << tex <<'\n';
   std::cout << "---------------------------------------------" << '\n';
 
@@ -429,10 +438,8 @@ string texto_de_salida_ascii(string texto){
   for (int i = 0;  ; i++) {
 
     if ( cad1.size() < 3) {
-
       a=string_a_entero(cad1);
-      std::cout << "a fin " << a << '\n';
-
+      // std::cout << "a fin " << a << '\n';
       cadena_de_salida.insert(0,a);
       break;
     }
@@ -440,7 +447,7 @@ string texto_de_salida_ascii(string texto){
 
       cad2=cad1.substr(cad1.size()-3,cad1.size());
       a=string_a_entero(cad2);
-      std::cout << "a  " << a << '\n';
+      // std::cout << "a  " << a << '\n';
 
       cad1=cad1.substr(0,cad1.size()-3);
       cadena_de_salida.insert(0,a);
