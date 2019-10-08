@@ -3,10 +3,16 @@
 #include <iostream>
 #include "rsa.h"
 #include <stdlib.h>
-#include <string.h>
+#include <string>
+
+#include <ctime>
+
+
 // HOLA NEL
 using namespace std;
 using namespace NTL;
+
+
 
 string leertxtparrafos(string nombre){
   string cadena;
@@ -64,53 +70,53 @@ int main(){
       std::cout << "-------------------------" << '\n';
       std::cout << "-------------------------" << '\n';
       std::cout << "-------------------------" << '\n';
-      
+
       string descifrado=emisorascii.descifrado_ascii(cifrado);
       escribir_txt(descifrado,documento4);
 
 
-  // rsa emisor;
-  // escribir_txt("n: "+emisor.get_n()+" e: "+emisor.get_e(),documento3);
-  //
-  // while (true) {
-  //   std::cout << "1 para cifrar emisor" << '\n';
-  //   std::cout << "2 para descifrado emisor" << '\n';
-  //   std::cout << "3 cifrar para reseptor" << '\n';
-  //   std::cin >> intercambio;
-  //
-  //   switch (intercambio) {
-  //     case 1: {
-  //              // std::cout << "que mensaje" << '\n';
-  //              // cin.ignore();
-  //              // getline(cin, texto);
-  //              texto = leertxtparrafos(documento2);
-  //             string cifrado=emisor.cifrado(texto);
-  //             escribir_txt(cifrado,documento1);
-  //             std::cout << "-------gardado----------" << '\n';
-  //             break;}
-  //     case 2:  {
-  //
-  //              string descifrado=emisor.descifrado(leertxt(documento1));
-  //              escribir_txt(descifrado,documento2);
-  //              break;
-  //            }
-  //     case 3:   {
-  //               string e=leertxt(documento3);
-  //               string n=leertxt(documento4);
-  //
-  //               rsa reseptor(e,n);
-  //               // std::cout << "que mensaje" << '\n';
-  //               // cin.ignore();
-  //               // std::getline (std::cin,texto);
-  //               texto=leertxt(documento2);
-  //
-  //               string descifrado_reseptor=reseptor.cifrado(texto);
-  //               escribir_txt(descifrado_reseptor,documento1);
-  //
-  //               break;
-  //             }
-  //   }
-  // }
+  rsa emisor;
+  escribir_txt("n: "+emisor.get_n()+" e: "+emisor.get_e(),documento3);
+
+  while (true) {
+    std::cout << "1 para cifrar emisor" << '\n';
+    std::cout << "2 para descifrado emisor" << '\n';
+    std::cout << "3 cifrar para reseptor" << '\n';
+    std::cin >> intercambio;
+
+    switch (intercambio) {
+      case 1: {
+               // std::cout << "que mensaje" << '\n';
+               // cin.ignore();
+               // getline(cin, texto);
+               texto = leertxtparrafos(documento2);
+              string cifrado=emisor.cifrado(texto);
+              escribir_txt(cifrado,documento1);
+              std::cout << "-------gardado----------" << '\n';
+              break;}
+      case 2:  {
+
+               string descifrado=emisor.descifrado(leertxt(documento1));
+               escribir_txt(descifrado,documento2);
+               break;
+             }
+      case 3:   {
+                string e=leertxt(documento3);
+                string n=leertxt(documento4);
+
+                rsa reseptor(e,n);
+                // std::cout << "que mensaje" << '\n';
+                // cin.ignore();
+                // std::getline (std::cin,texto);
+                texto=leertxt(documento2);
+
+                string descifrado_reseptor=reseptor.cifrado(texto);
+                escribir_txt(descifrado_reseptor,documento1);
+
+                break;
+              }
+    }
+  }
 
   return 0;
 }

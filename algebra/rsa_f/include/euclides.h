@@ -322,10 +322,14 @@ string zz_a_string(const ZZ &z) {
       return buffer.str();
   }
 
+
+
   ZZ string_a_zz(string message){
      NTL::ZZ number(NTL::INIT_VAL, message.c_str());
      return number;
    }
+
+
 
 ZZ bloques_de_enteros(string &tex,ZZ n){
   ZZ numero;
@@ -392,8 +396,12 @@ ZZ bloques_de_enteros_atras(string &tex,ZZ n){
       temp= tex[tamanio];
       numero_zz.insert(0,temp);
       tamanio--;
+      std::cout << "numero  " << numero_zz << '\n';
+
       numero=string_a_zz(numero_zz);
       if (numero < n) {
+        std::cout << "numero  " << numero_zz << '\n';
+
         numero_de_salida=numero;
       }
     }
@@ -430,6 +438,7 @@ std::cout  << "sin  cortar " << tex <<'\n';
 string texto_de_salida_ascii(string texto){
 
   string cad1=texto;
+  int tam=cad1.size();
   string cad2;
   string cadena_de_salida;
 
